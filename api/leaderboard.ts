@@ -1,6 +1,13 @@
 import { createClient } from '@supabase/supabase-js';
 
-type GAME = 'tango' | 'queens' | 'zip';
+type Game = 'tango' | 'queens' | 'zip';
+
+interface Result {
+    user: string,
+    day: Date,
+    time: number,
+    game: Game
+}
 
 export async function GET(request: Request) {
     const supabase = createClient(
@@ -8,11 +15,10 @@ export async function GET(request: Request) {
         process.env.SUPABASE_ANON_KEY!
     );
 
-    const {data, error} = await supabase.from('Result').select('*');
+    const {data, error} = await supabase.from('result').select('*');
+    const result: Result[] = data === null ? [] : data;
 
-    console.log(data);
-
-    return new Response(JSON.stringify(data));
+    return new Response(JSON.stringify(result));
 }
 
 export function POST(request: Request) {
