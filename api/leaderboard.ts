@@ -10,6 +10,8 @@ export async function GET(request: Request) {
 
     const {data, error} = await supabase.from('Result').select('*');
 
+    console.log(data);
+
     return new Response(JSON.stringify(data));
 }
 
