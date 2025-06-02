@@ -17,6 +17,8 @@
         "build": {
           "builder": "@angular/build:application",
           "options": {
+            "serviceWorker": true,
+            "ngswConfigPath": "src/ngsw-config.json",
             "browser": "src/main.ts",
             "polyfills": [
               "zone.js"
