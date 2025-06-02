@@ -8,7 +8,7 @@ export async function GET(request: Request) {
         process.env.SUPABASE_ANON_KEY!
     );
 
-    const {data, error} = await supabase.from('result').select()
+    const {data, error} = await supabase.from('Result').select();
 
     return new Response(JSON.stringify(data));
 }
