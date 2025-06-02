@@ -17,7 +17,7 @@ export async function GET(request: Request) {
 
     const {data, error} = await supabase.from('result').select('*');
 
-    return new Response(error?.message);
+    return new Response(JSON.stringify(data) + JSON.stringify(error));
 }
 
 export function POST(request: Request) {
